@@ -18,8 +18,14 @@ babel = Babel(app)
 
 @app.route('/', strict_slashes=False, methods=['GET'])
 def welcome():
-    '''function to render 1-index.html'''
-    return render_template('1-index.html')
+    '''function to render 2-index.html'''
+    return render_template('2-index.html')
+
+
+@babel.localeselector
+def get_locale():
+    '''function to get locale based on defined languages'''
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
 if __name__ == '__main__':
